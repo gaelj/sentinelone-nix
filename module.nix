@@ -231,7 +231,7 @@ in
           "uptrack-prefetch.service"
           "uptrack.service"
         ];
-        RefuseManualStop = "yes";
+        # RefuseManualStop = "yes"; # FIXME
         StartLimitInterval = "90";
         StartLimitBurst = "4";
         RequiresMountsFor = [
