@@ -244,7 +244,7 @@ in
       };
       serviceConfig = {
         Type = "exec";
-        ExecStart = "${cfg.package}/opt/sentinelone/bin/sentinelone-agent";
+        ExecStart = "/opt/sentinelone/bin/sentinelone-agent";
         WorkingDirectory = "/opt/sentinelone/bin";
         WatchdogSec = "30s";
         Restart = "on-failure";
