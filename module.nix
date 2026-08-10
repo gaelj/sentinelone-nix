@@ -13,8 +13,6 @@ let
     );
   hasCustomerId = customerId != null;
   initScript = pkgs.writeShellScriptBin "sentinelone-init.sh" ''
-    #!/usr/bin/env bash
-
     mkdir -p ${cfg.dataDir}
 
     # initialize the data directory
@@ -153,13 +151,13 @@ in
     systemd.services.sentinelone-init = {
       wantedBy = [ "sentinelone.service" ];
       before = [ "sentinelone.service" ];
-      unitConfig.RequiresMountsFor = [
-        "/opt/sentinelone"
-        "/opt/sentinelone/bin"
-        "/opt/sentinelone/ebpfs"
-        "/opt/sentinelone/lib"
-        "/opt/sentinelone/ranger"
-      ];
+      # unitConfig.RequiresMountsFor = [
+      #   "/opt/sentinelone"
+      #   "/opt/sentinelone/bin"
+      #   "/opt/sentinelone/ebpfs"
+      #   "/opt/sentinelone/lib"
+      #   "/opt/sentinelone/ranger"
+      # ];
       serviceConfig = {
         Type = "oneshot";
         ExecStart = "${getExe initScript}";
