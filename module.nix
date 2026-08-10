@@ -108,6 +108,7 @@ in
           description = "Directory in which the agent stores its runtime data.";
           default = "/var/lib/sentinelone";
         };
+        allowManualServiceStop = mkEnableOption "Allow manual stopping of the service. Keep disabled for security ; enable for debugging purposes";
       };
     };
   };
@@ -222,7 +223,7 @@ in
           "uptrack-prefetch.service"
           "uptrack.service"
         ];
-        RefuseManualStop = "yes";
+        RefuseManualStop = if cfg.allowManualServiceStop then "no" else "yes";
         StartLimitInterval = "90";
         StartLimitBurst = "4";
         RequiresMountsFor = [
