@@ -13,7 +13,7 @@ let
     );
   hasCustomerId = customerId != null;
   initScript = pkgs.writeShellScriptBin "sentinelone-init.sh" ''
-    #!/bin/bash
+    #!/usr/bin/env bash
 
     mkdir -p ${cfg.dataDir}
 
