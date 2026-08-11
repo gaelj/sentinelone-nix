@@ -32,8 +32,10 @@ let
       "SERVICE_TYPE": "systemd"
     }
     EOF
+
       siteKey=$(cat ${cfg.sentinelOneManagementTokenPath} | base64 -d | ${getExe pkgs.jq} .site_key)
       mgmtUrl=$(cat ${cfg.sentinelOneManagementTokenPath} | base64 -d | ${getExe pkgs.jq} .url)
+
       cat << EOF > ${cfg.dataDir}/configuration/basic.conf
     {
         "mgmt_device-type": 1,
@@ -42,7 +44,7 @@ let
     }
     EOF
 
-      chown -R sentinelone:sentinelone ${cfg.dataDir}
+      chown -R sentinelone:sentinelone $(find ${cfg.dataDir} -mindepth 1 -maxdepth 1 ! -name bin ! -name ebpfs ! -name lib ! -name ranger)
       chmod -R 0755 $(find ${cfg.dataDir} -group sentinelone)
     fi
   '';
