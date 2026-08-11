@@ -246,7 +246,6 @@ in
         StartLimitInterval = "90";
         StartLimitBurst = "4";
         RequiresMountsFor = [
-          "/opt/sentinelone"
           "/opt/sentinelone/bin"
           "/opt/sentinelone/ebpfs"
           "/opt/sentinelone/lib"
