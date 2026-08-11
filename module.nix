@@ -17,7 +17,7 @@ let
 
     # initialize the data directory
     if [ -z "$(ls -A ${cfg.dataDir} 2>/dev/null)" ]; then
-      find "${cfg.package}/opt/sentinelone/" -mindepth 1 -maxdepth 1 ! -name "bin" ! -name "ebpfs" ! -name "ranger" ! -name "lib" -exec cp -r {} "${cfg.dataDir}/" \;
+      find "${cfg.package}/opt/sentinelone/" -mindepth 1 -maxdepth 1 ! -name "bin" ! -name "ebpfs" ! -name "ranger" -exec cp -r {} "${cfg.dataDir}/" \;
 
       cat << EOF > ${cfg.dataDir}/configuration/install_config
     S1_AGENT_MANAGEMENT_TOKEN=$(cat ${cfg.sentinelOneManagementTokenPath})
